@@ -1,10 +1,10 @@
-import Image, { type ImageProps } from 'next/image'
+import Image, {type ImageProps} from 'next/image'
 import Link from 'next/link'
 import clsx from 'clsx'
 
-import { Button } from '@/components/Button'
-import { Card } from '@/components/Card'
-import { Container } from '@/components/Container'
+import {Button} from '@/components/Button'
+import {Card} from '@/components/Card'
+import {Container} from '@/components/Container'
 import {
   GitHubIcon,
   InstagramIcon,
@@ -20,8 +20,8 @@ import image2 from '@/images/photos/image-2.jpg'
 import image3 from '@/images/photos/image-3.jpg'
 import image4 from '@/images/photos/image-4.jpg'
 import image5 from '@/images/photos/image-5.jpg'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
+import {type ArticleWithSlug, getAllArticles} from '@/lib/articles'
+import {formatDate} from '@/lib/formatDate'
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -82,7 +82,7 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Article({ article }: { article: ArticleWithSlug }) {
+function Article({article}: { article: ArticleWithSlug }) {
   return (
     <Card as="article">
       <Card.Title href={`/articles/${article.slug}`}>
@@ -98,14 +98,15 @@ function Article({ article }: { article: ArticleWithSlug }) {
 }
 
 function SocialLink({
-  icon: Icon,
-  ...props
-}: React.ComponentPropsWithoutRef<typeof Link> & {
+                      icon: Icon,
+                      ...props
+                    }: React.ComponentPropsWithoutRef<typeof Link> & {
   icon: React.ComponentType<{ className?: string }>
 }) {
   return (
     <Link className="group -m-1 p-1" {...props}>
-      <Icon className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300" />
+      <Icon
+        className="h-6 w-6 fill-zinc-500 transition group-hover:fill-zinc-600 dark:fill-zinc-400 dark:group-hover:fill-zinc-300"/>
     </Link>
   )
 }
@@ -117,7 +118,7 @@ function Newsletter() {
       className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40"
     >
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <MailIcon className="h-6 w-6 flex-none" />
+        <MailIcon className="h-6 w-6 flex-none"/>
         <span className="ml-3">Stay up to date</span>
       </h2>
       <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">
@@ -147,7 +148,7 @@ interface Role {
   end: string | { label: string; dateTime: string }
 }
 
-function Role({ role }: { role: Role }) {
+function Role({role}: { role: Role }) {
   let startLabel =
     typeof role.start === 'string' ? role.start : role.start.label
   let startDate =
@@ -158,8 +159,9 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+      <div
+        className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full shadow-md shadow-zinc-800/5 ring-1 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
+        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized/>
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -175,7 +177,8 @@ function Role({ role }: { role: Role }) {
           className="ml-auto text-xs text-zinc-400 dark:text-zinc-500"
           aria-label={`${startLabel} until ${endLabel}`}
         >
-          <time dateTime={startDate}>{startLabel}</time>{' '}
+          <time dateTime={startDate}>{startLabel}</time>
+          {' '}
           <span aria-hidden="true">—</span>{' '}
           <time dateTime={endDate}>{endLabel}</time>
         </dd>
@@ -222,17 +225,18 @@ function Resume() {
   return (
     <div className="rounded-2xl border border-zinc-100 p-6 dark:border-zinc-700/40">
       <h2 className="flex text-sm font-semibold text-zinc-900 dark:text-zinc-100">
-        <BriefcaseIcon className="h-6 w-6 flex-none" />
+        <BriefcaseIcon className="h-6 w-6 flex-none"/>
         <span className="ml-3">Work</span>
       </h2>
       <ol className="mt-6 space-y-4">
         {resume.map((role, roleIndex) => (
-          <Role key={roleIndex} role={role} />
+          <Role key={roleIndex} role={role}/>
         ))}
       </ol>
       <Button href="#" variant="secondary" className="group mt-6 w-full">
         Download CV
-        <ArrowDownIcon className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50" />
+        <ArrowDownIcon
+          className="h-4 w-4 stroke-zinc-400 transition group-active:stroke-zinc-600 dark:group-hover:stroke-zinc-50 dark:group-active:stroke-zinc-50"/>
       </Button>
     </div>
   )
@@ -275,13 +279,13 @@ export default async function Home() {
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 dark:text-zinc-100 sm:text-5xl">
             Software engineer, designer, and amateur photographer.
           </h1>
+
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Irving, a software engineer based in Ho Chi Minh City.
-            I wear multiple hats as the founder and CEO of a game development
-            studio that proudly carries my name. At our studio, we specialize
-            in crafting casual games designed to bring joy and entertainment
-            to fun-seekers everywhere!
+            I'm Irving, based in Ho Chi Minh City and a back-end focused software engineer at Axon. In addition to my
+            day job, I'm the founder of my own game development studio. We're all about creating casual games that
+            deliver fun and entertainment to people everywhere.
           </p>
+
           <div className="mt-6 flex gap-6">
             {/*<SocialLink*/}
             {/*  href="https://twitter.com"*/}
@@ -306,7 +310,7 @@ export default async function Home() {
           </div>
         </div>
       </Container>
-      <Photos />
+      <Photos/>
       {/*<Container className="mt-24 md:mt-28">*/}
       {/*  <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">*/}
       {/*    <div className="flex flex-col gap-16">*/}
